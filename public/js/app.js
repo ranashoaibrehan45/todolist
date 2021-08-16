@@ -20118,7 +20118,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-success pull-right",
+                    staticClass: "btn btn-success pull-right mt-1 mb-1 mr-1",
                     on: {
                       click: function($event) {
                         return _vm.addCardModal(column)
