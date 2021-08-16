@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('column/sort/cards', [ColumnController::class, 'sortCards']);
 Route::resource('column', ColumnController::class);
 Route::resource('card', CardController::class);

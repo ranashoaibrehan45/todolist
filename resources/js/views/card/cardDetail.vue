@@ -1,5 +1,6 @@
 <template>
     <modal name="cardDetailModal" class="modal">
+        <button @click="editCard">Edit</button>
         <h1 v-if="card">{{card.title}}</h1>
         <p>{{card.description}}</p>
 
@@ -21,6 +22,10 @@ export default {
       }
     },
     methods: {
+        editCard() {
+            this.$modal.hide('cardDetailModal');
+            this.$emit('cardEdited');
+        },
         hide () {
             this.$modal.hide('cardDetailModal');
         }

@@ -21,37 +21,123 @@ body {
   margin: 5px;
   vertical-align: top;
 }
-.column .header {
-  background-color: $columnHeaderBg;
-  font-weight: bold;
-  padding: 5px;
+.column {
+  .header {
+    background-color: $columnHeaderBg;
+    font-weight: bold;
+    padding: 5px;
+  }
+  .header {
+    .remove {
+      float: right;
+      cursor: pointer;
+      font-weight: normal;
+      color: red;
+    }
+  }
 }
 
-.column .header .remove {
-  float: right;
-  cursor: pointer;
-  font-weight: normal;
-  color: red;
-}
 .card {
-  padding: 10px 5px;
-  border-bottom: 1px solid #EEE;
-}
-
-.error {color: red;}
-.vm--modal {
-  padding: 20px;
-  height: auto !important;
+  .title {
+    background: #EEE;
+    padding: 10px 5px;
+    margin-top: 2px;
+  }
+  .button-group {
+    text-align:right;
+    padding: 5px 0px;
+  }
 }
 
 .form-group {
   display: block;
   margin: 20px 0px;
 }
-.form-group label {
-  display: block;
-  margin: 5px 0px
+.form-group {
+  label {
+    display: block;
+    margin: 5px 0px
+  }
+  input,textarea {
+    width: 100%;
+  }
 }
-.form-group input,textarea {
-  width: 100%;
+
+.text-right {
+  text-alight: right;
+}
+.text-left {
+  text-alight: left;
+}
+.text-center {
+  text-alight: center;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clear-left {
+  clear: left;
+}
+.clear-right {
+  clear: right;
+}
+.clear {
+  clear: both;
+}
+
+.mt-1 {
+  margin-top: 5px;
+}
+.mb-1 {
+  margin-bottom: 5px;
+}
+.ml-1 {
+  margin-left: 5px;
+}
+.mr-1 {
+  margin-right: 5px;
+}
+
+/* button style */
+.btn {
+  border: none;
+  padding: 8px 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
+.btn-primary  {
+  @extend .btn;
+  color: #FFF;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+.btn-seconday  {
+  @extend .btn;
+  color: #FFF;
+  background-color: #545b62;
+  border-color: #545b62;
+}
+.btn-success  {
+  @extend .btn;
+  color: #FFF;
+  background-color: #1e7e34;
+  border-color: #1c7430;
+}
+.btn-info  {
+  @extend .btn;
+  color: #FFF;
+  background-color: #117a8b;
+  border-color: #10707f;
+}
+.error {color: red;}
+.vm--modal {
+  padding: 20px;
+  height: auto !important;
 }

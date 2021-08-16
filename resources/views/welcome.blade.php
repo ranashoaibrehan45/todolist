@@ -6,7 +6,7 @@
 
         <title>{{env('APP_NAME')}}</title>
 
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
+        <link rel="stylesheet" href="{{ url('css/app.css') }}" />
 
         <style>
             body {
@@ -18,6 +18,6 @@
         <div id="app">
             <app></app>
         </div>
-        <script src="{{ mix('js/app.js') }}"></script>
+        <script src="{{ url('js/app.js') }}"></script>
     </body>
 </html>

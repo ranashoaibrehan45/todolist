@@ -19,6 +19,7 @@ class CreateCardsTable extends Migration
             $table->foreign('column_id')->references('id')->on('columns');
             $table->string('title');
             $table->text('description');
+            $table->integer('sort_order')->default(0);
             $table->timestamps();
         });
     }

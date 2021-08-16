@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Log;
 
 class CardRequest extends FormRequest
 {
@@ -23,6 +24,7 @@ class CardRequest extends FormRequest
      */
     public function rules()
     {
+        
         switch ($this->method()) {
             case 'POST':
                 return [
@@ -33,7 +35,7 @@ class CardRequest extends FormRequest
             
             case 'PUT':
                 return [
-                    'title' => 'required|min:3|max:255|unique:cards,title,'. $this->route('card')->id,
+                    'title' => 'required|min:3|max:255|unique:cards,title,'. $this->route('card'),
                     'description' => 'required|min:3|max:500',
                 ];
                 break;

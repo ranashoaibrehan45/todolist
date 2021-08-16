@@ -22,7 +22,6 @@ body {
   font-weight: bold;
   padding: 5px;
 }
-
 .column .header .remove {
   float: right;
   cursor: pointer;
@@ -30,18 +29,14 @@ body {
   color: red;
 }
 
-.card {
+.card .title {
+  background: #EEE;
   padding: 10px 5px;
-  border-bottom: 1px solid #EEE;
+  margin-top: 2px;
 }
-
-.error {
-  color: red;
-}
-
-.vm--modal {
-  padding: 20px;
-  height: auto !important;
+.card .button-group {
+  text-align: right;
+  padding: 5px 0px;
 }
 
 .form-group {
@@ -53,7 +48,99 @@ body {
   display: block;
   margin: 5px 0px;
 }
-
-.form-group input, textarea {
+.form-group input, .form-group textarea {
   width: 100%;
+}
+
+.text-right {
+  text-alight: right;
+}
+
+.text-left {
+  text-alight: left;
+}
+
+.text-center {
+  text-alight: center;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clear-left {
+  clear: left;
+}
+
+.clear-right {
+  clear: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.mt-1 {
+  margin-top: 5px;
+}
+
+.mb-1 {
+  margin-bottom: 5px;
+}
+
+.ml-1 {
+  margin-left: 5px;
+}
+
+.mr-1 {
+  margin-right: 5px;
+}
+
+/* button style */
+.btn, .btn-info, .btn-success, .btn-seconday, .btn-primary {
+  border: none;
+  padding: 8px 15px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+}
+
+.btn-primary {
+  color: #FFF;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn-seconday {
+  color: #FFF;
+  background-color: #545b62;
+  border-color: #545b62;
+}
+
+.btn-success {
+  color: #FFF;
+  background-color: #1e7e34;
+  border-color: #1c7430;
+}
+
+.btn-info {
+  color: #FFF;
+  background-color: #117a8b;
+  border-color: #10707f;
+}
+
+.error {
+  color: red;
+}
+
+.vm--modal {
+  padding: 20px;
+  height: auto !important;
 }

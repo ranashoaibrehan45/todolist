@@ -4,22 +4,31 @@
 		<button @click="createColumnModal">Add New Column</button>
 		
 		<div class="row">
-			<div class="column" v-for="column in columns">
+			<div class="column" v-for="(column, CI) in columns">
 				<div class="header">
 					{{column.title}}
 					<span class="remove" @click="removeColumn(column.id)">Remove</span>
 				</div>
 				<div class="body">
-					<button @click="addCardModal(column)" class="btn btn-success">Add Card</button>
-					<div class="card" v-if="column.cards" v-for="card in column.cards" @click="viewCard(card)">{{card.title}}</div>
+					<button @click="addCardModal(column)" class="btn btn-success pull-right mt-1 mb-1 mr-1">Add Card</button>
+					<br class="clear">
+					<div class="card" v-if="column.cards" v-for="(card, RI) in column.cards">
+						<div class="title" @click="viewCard(card)">{{card.title}}</div>
+						<div class="button-group">
+							<button v-if="RI !== 0" @click="updateCardPosition(column.id, card.id, 'up')">&#8593;</button>
+							<button v-if="CI !== columns.length-1" @click="updateCardPosition(column.id, card.id, 'right')">&#8594;</button>
+							<button v-if="RI !== column.cards.length - 1" @click="updateCardPosition(column.id, card.id, 'down')">&#8595;</button>
+							<button v-if="CI !== 0" @click="updateCardPosition(column.id, card.id, 'left')">&#8592;</button>
+						</div>
+					</div>
 				</div>
-
-
 			</div>
 		</div>
+
 		<addColumn @columnCreated="refreshRecords"></addColumn>
 		<addCard :column="column" @cardCreated="getColumns"></addCard>
-		<viewCard :card="card"></viewCard>
+		<viewCard :card="card" @cardEdited="editCard"></viewCard>
+    	<editCard :card="card" @cardUpdated="getColumns"></editCard>
     </div>
 	
 </template>
@@ -29,6 +38,7 @@
 	Vue.component('addColumn', require('./column/addColumn.vue').default);
 	Vue.component('addCard', require('./card/addCard.vue').default);
 	Vue.component('viewCard', require('./card/cardDetail.vue').default);
+	Vue.component('editCard', require('./card/editCard.vue').default);
 
 	export default{
 		data() {
@@ -47,9 +57,7 @@
 			getColumns() {
 				axios.get('api/column')
 				.then(response => {
-                    console.log(response.data);
-                    console.log(response.data.length);
-					if(response.data.length > 0)
+                    if(response.data.length > 0)
 					{
 						this.columns = response.data;
 					}
@@ -84,7 +92,22 @@
 			viewCard(card) {
 				this.card = card;
 				this.$modal.show('cardDetailModal');
-			}
+			},
+			editCard() {
+				console.log('editCardModal');
+				this.$modal.show('editCardModal');
+			},
+			updateCardPosition(columnId, cardId, move) {
+				axios.post("api/column/sort/cards",{
+					'column_id': columnId,
+					'card_id': cardId,
+					'move': move
+				})
+				.then(response => {
+					this.columns = response.data;
+				})
+				.catch(error => this.errors = error.response.data.errors)
+			},
 		}// end of methods
 	}
 </script>

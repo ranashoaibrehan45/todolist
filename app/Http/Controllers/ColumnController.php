@@ -6,6 +6,7 @@ use App\Events\ColumnDeleted;
 use Illuminate\Http\Request;
 use App\Http\Requests\ColumnRequest;
 use App\Models\Column;
+use App\Models\Card;
 use Log;
 use DB;
 
@@ -108,5 +109,61 @@ class ColumnController extends Controller
                 return false;
             }
         }
+    }
+
+    public function sortCards(Request $request)
+    {
+        switch ($request->input('move')) {
+            case 'up':
+                $card = Card::find($request->input('card_id'));
+                $upperCard = Card::where('sort_order', '<', $card->sort_order)
+                    ->where('column_id', $request->input('column_id'))
+                    ->orderBy('sort_order', 'desc')
+                    ->first();
+                $upperCardSortorder = $upperCard->sort_order;
+                $upperCard->sort_order = $card->sort_order;
+                $upperCard->save();
+
+                $card->sort_order = $upperCardSortorder;
+                $card->save();
+                break;
+            case 'right':
+                $card = Card::find($request->input('card_id'));
+                $column = Column::where('id', '>', $card->column_id)
+                    ->orderBy('id')
+                    ->first();
+                if ($column) {
+                    $card->column_id = $column->id;
+                    $card->sort_order = $card->getSortOrder();
+                    $card->save();
+                }
+                break;
+            case 'down':
+                $card = Card::find($request->input('card_id'));
+                $upperCard = Card::where('sort_order', '>', $card->sort_order)
+                    ->where('column_id', $request->input('column_id'))
+                    ->orderBy('sort_order', 'asc')
+                    ->first();
+                $upperCardSortorder = $upperCard->sort_order;
+                $upperCard->sort_order = $card->sort_order;
+                $upperCard->save();
+
+                $card->sort_order = $upperCardSortorder;
+                $card->save();
+                break;
+            case 'left':
+                $card = Card::find($request->input('card_id'));
+                $column = Column::where('id', '<', $card->column_id)
+                    ->orderBy('id', 'desc')
+                    ->first();
+                if ($column) {
+                    $card->column_id = $column->id;
+                    $card->sort_order = $card->getSortOrder();
+                    $card->save();
+                }
+                break;
+                break;
+        }
+        return $this->index();
     }
 }

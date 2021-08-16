@@ -38,14 +38,17 @@ class CardController extends Controller
     {
         $card = Card::create($request->all());
         if ($card->id > 0) {
-            return [
-                'success' => true,
-            ];
-        } else {
-            return [
-                'success' => false,
-            ];
+            $sort_order = $card->getSortOrder();
+            $card->sort_order = $sort_order;
+            if ($card->save()) {
+                return [
+                    'success' => true,
+                ];
+            }
         }
+        return [
+            'success' => false,
+        ];
     }
 
     /**
@@ -67,7 +70,7 @@ class CardController extends Controller
      */
     public function edit($id)
     {
-        $card = Card::fine($id);
+        $card = Card::find($id);
         if ($card) {
             return [
                 'success' => true,
@@ -90,7 +93,7 @@ class CardController extends Controller
      */
     public function update(CardRequest $request, $id)
     {
-        $card = Card::fine($id);
+        $card = Card::find($id);
         if ($card) {
             if ($card->update($request->all())) {
                 return [
@@ -112,7 +115,7 @@ class CardController extends Controller
      */
     public function destroy($id)
     {
-        $card = Card::fine($id);
+        $card = Card::find($id);
         if ($card) {
             if ($card->delete()) {
                 return [

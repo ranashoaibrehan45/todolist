@@ -13,15 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\PagesController@index');
 
-Route::get('db/backup', function() {
-    Spatie\DbDumper\Databases\MySql::create()
-    ->setDbName('todolist')
-    ->setUserName('root')
-    ->setPassword('')
-    ->dumpToFile('todolist.sql');
-});
 Route::get('/{any}', 'App\Http\Controllers\PagesController@index')->where('any', '.*');

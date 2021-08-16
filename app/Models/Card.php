@@ -19,4 +19,14 @@ class Card extends Model
     {
         return $this->belongsTo(Column::class);
     }
+
+    public function getSortOrder()
+    {
+        $sortOrder = 1;
+        if (Card::where('column_id', $this->column_id)->count() > 0) {
+            $sortOrder = Card::where('column_id', $this->column_id)->max('sort_order');
+            return $sortOrder + 1;
+        }
+        return $sortOrder;
+    }
 }
