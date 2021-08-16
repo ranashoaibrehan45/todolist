@@ -1,0 +1,57 @@
+$myFont: Helvetica, sans-serif;
+$fontSize: 16px;
+$columnWidth: 20%;
+$modalWidth: 60%;
+$columnHeaderBg: #EEE;
+$borderColor: #EEE;
+
+body { 
+    font-family: $myFont;
+    font-size: $fontSize;
+    width: 100%; 
+}
+.container {
+  width: inherit;
+  display: block;
+}
+.column {
+  width: $columnWidth;
+  border: 1px solid $borderColor;
+  display: inline-block;
+  margin: 5px;
+  vertical-align: top;
+}
+.column .header {
+  background-color: $columnHeaderBg;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.column .header .remove {
+  float: right;
+  cursor: pointer;
+  font-weight: normal;
+  color: red;
+}
+.card {
+  padding: 10px 5px;
+  border-bottom: 1px solid #EEE;
+}
+
+.error {color: red;}
+.vm--modal {
+  padding: 20px;
+  height: auto !important;
+}
+
+.form-group {
+  display: block;
+  margin: 20px 0px;
+}
+.form-group label {
+  display: block;
+  margin: 5px 0px
+}
+.form-group input,textarea {
+  width: 100%;
+}
