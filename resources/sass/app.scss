@@ -61,7 +61,7 @@ body {
   border-radius: 5px 5px 0px 0px;
 
   @include breakpoint(xs) {
-    width: 80%;
+    width: 90%;
   }
   
   @include breakpoint(sm) {
