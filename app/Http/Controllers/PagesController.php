@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Storage;
 
 class PagesController extends Controller
 {
@@ -14,10 +15,17 @@ class PagesController extends Controller
 
     public function databaseBackup()
     {
-        //echo date('Y-m-d-H-i-s');
-        //echo exec('php artisan backup:run');
-        Artisan::call('backup:run');
-        $path = storage_path('app/Todo-List/' . date('Y-m-d-H-i-s') . '.zip');
-        return response()->download($path);
+        try {
+            Artisan::call('backup:run');
+            $path = storage_path('app/Todo-List/' . date('Y-m-d-H-i-s') . '.zip');
+            
+            do {
+                // wait
+            } while (Storage::disk('local')->exists($path));
+
+            return response()->download($path);
+        } catch (\Exception $e) {
+            echo '<div class="text-center">There is some problem, Please try again later.</div>';
+        }
     }
 }
