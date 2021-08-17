@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\PagesController@index');
 
+Route::get('/', 'App\Http\Controllers\PagesController@index');
+Route::get('database/backup', 'App\Http\Controllers\PagesController@databaseBackup');
 Route::get('/{any}', 'App\Http\Controllers\PagesController@index')->where('any', '.*');

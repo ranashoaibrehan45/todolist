@@ -1,13 +1,13 @@
 <template>
     <div class="container">
         <h1>Todo List</h1>
-		<button @click="createColumnModal">Add New Column</button>
+		<button @click="createColumnModal" class="btn btn-primary">Add New Column</button>
 		
 		<div class="row">
 			<div class="column" v-for="(column, CI) in columns">
 				<div class="header">
 					{{column.title}}
-					<span class="remove" @click="removeColumn(column.id)">Remove</span>
+					<button class="remove" @click="removeColumn(column.id)">Remove</button>
 				</div>
 				<div class="body">
 					<button @click="addCardModal(column)" class="btn btn-success pull-right mt-1 mb-1 mr-1">Add Card</button>

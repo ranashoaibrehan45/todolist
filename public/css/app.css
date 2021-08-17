@@ -101,7 +101,7 @@ body {
 }
 
 /* button style */
-.btn, .btn-info, .btn-success, .btn-seconday, .btn-primary {
+.btn, .btn-danger, .btn-info, .btn-success, .btn-seconday, .btn-primary {
   border: none;
   padding: 8px 15px;
   text-align: center;
@@ -134,6 +134,12 @@ body {
   color: #FFF;
   background-color: #117a8b;
   border-color: #10707f;
+}
+
+.btn-danger {
+  color: #FFF;
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 .error {

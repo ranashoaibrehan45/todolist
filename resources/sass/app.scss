@@ -136,6 +136,12 @@ body {
   background-color: #117a8b;
   border-color: #10707f;
 }
+.btn-danger  {
+  @extend .btn;
+  color: #FFF;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
 .error {color: red;}
 .vm--modal {
   padding: 20px;

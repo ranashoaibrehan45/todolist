@@ -2233,7 +2233,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 vue__WEBPACK_IMPORTED_MODULE_2__.default.use((vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default()));
-axios.defaults.baseURL = 'https://www.localhost.dev/todolist/public/';
+axios.defaults.baseURL = 'https://todolist.rosesolution.com/';
 var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   el: '#app',
   render: function render(h) {
@@ -20086,9 +20086,14 @@ var render = function() {
     [
       _c("h1", [_vm._v("Todo List")]),
       _vm._v(" "),
-      _c("button", { on: { click: _vm.createColumnModal } }, [
-        _vm._v("Add New Column")
-      ]),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          on: { click: _vm.createColumnModal }
+        },
+        [_vm._v("Add New Column")]
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -20098,7 +20103,7 @@ var render = function() {
             _c("div", { staticClass: "header" }, [
               _vm._v("\n\t\t\t\t\t" + _vm._s(column.title) + "\n\t\t\t\t\t"),
               _c(
-                "span",
+                "button",
                 {
                   staticClass: "remove",
                   on: {
