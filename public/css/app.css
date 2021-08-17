@@ -9,23 +9,25 @@ body {
   width: inherit;
   display: block;
   padding: 10px 20px;
+  width: 96%;
 }
 
 .column {
   width: 20%;
   border: 1px solid #EEE;
   display: inline-block;
-  margin: 5px;
+  margin: 10px 5px;
   vertical-align: top;
+  border-radius: 5px 5px 0px 0px;
 }
 @media (max-width: 767px) {
   .column {
-    width: 100%;
+    width: 80%;
   }
 }
 @media (min-width: 768px) {
   .column {
-    width: 45%;
+    width: 46%;
   }
 }
 @media (min-width: 992px) {
@@ -39,9 +41,11 @@ body {
   }
 }
 .column .header {
-  background-color: #EEE;
+  background-color: #bfbfbf;
   font-weight: bold;
-  padding: 5px;
+  padding: 15px 5px;
+  background-color: #bfbfbf;
+  border-radius: 5px 5px 0px 0px;
 }
 .column .header .remove {
   float: right;

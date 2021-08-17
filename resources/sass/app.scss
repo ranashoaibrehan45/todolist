@@ -2,7 +2,7 @@ $myFont: Helvetica, sans-serif;
 $fontSize: 16px;
 $columnWidth: 20%;
 $modalWidth: 60%;
-$columnHeaderBg: #EEE;
+$columnHeaderBg: #bfbfbf;
 $borderColor: #EEE;
 $errorColor: red;
 
@@ -50,20 +50,22 @@ body {
   width: inherit;
   display: block;
   padding: 10px 20px;
+  width: 96%;
 }
 .column {
   width: $columnWidth;
   border: 1px solid $borderColor;
   display: inline-block;
-  margin: 5px;
+  margin: 10px 5px;
   vertical-align: top;
+  border-radius: 5px 5px 0px 0px;
 
   @include breakpoint(xs) {
-    width: 100%;
+    width: 80%;
   }
   
   @include breakpoint(sm) {
-    width: 45%;
+    width: 46%;
   }
 
   @include breakpoint(md) {
@@ -78,7 +80,9 @@ body {
   .header {
     background-color: $columnHeaderBg;
     font-weight: bold;
-    padding: 5px;
+    padding: 15px 5px;
+    background-color: $columnHeaderBg;
+    border-radius: 5px 5px 0px 0px;
 
     .remove {
       float: right;
