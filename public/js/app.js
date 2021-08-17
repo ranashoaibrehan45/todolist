@@ -2233,7 +2233,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 vue__WEBPACK_IMPORTED_MODULE_2__.default.use((vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default()));
-axios.defaults.baseURL = 'https://todolist.rosesolution.com/';
+axios.defaults.baseURL = 'https://www.localhost.dev/todolist/public';
 var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   el: '#app',
   render: function render(h) {

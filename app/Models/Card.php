@@ -10,9 +10,9 @@ class Card extends Model
     use HasFactory;
 
     protected $fillable = [
-    	'column_id',
-    	'title',
-    	'description',
+        'column_id',
+        'title',
+        'description',
     ];
 
     public function column()

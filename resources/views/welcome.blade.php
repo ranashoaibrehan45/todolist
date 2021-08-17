@@ -12,7 +12,7 @@
         </style>
     </head>
     <body>
-        <a href="{{url('database/backup')}}" target="_blank" class="btn btn-info">Take Database Backup</a>
+        <a href="{{url('database/backup')}}" target="_blank" class="btn btn-info mt-2 ml-4">Take Database Backup</a>
         <div id="app">
             <app></app>
         </div>

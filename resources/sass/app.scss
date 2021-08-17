@@ -4,15 +4,52 @@ $columnWidth: 20%;
 $modalWidth: 60%;
 $columnHeaderBg: #EEE;
 $borderColor: #EEE;
+$errorColor: red;
+
+$margin-1: 5px;
+$margin-2: 10px;
+$margin-3: 15px;
+$margin-4: 20px;
+$margin-5: 25px;
+
+$font-weights: (
+  'regular': 400,
+  'medium': 500,
+  'bold': 700
+);
+
+@mixin breakpoint($class) {
+  @if $class == xs {
+    @media (max-width: 767px) { @content; }
+  }
+ 
+  @else if $class == sm {
+    @media (min-width: 768px) { @content; }
+  }
+ 
+  @else if $class == md {
+    @media (min-width: 992px) { @content; }
+  }
+ 
+  @else if $class == lg {
+    @media (min-width: 1200px) { @content; }
+  }
+ 
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}
 
 body { 
     font-family: $myFont;
     font-size: $fontSize;
+    font-weight: map-get($font-weights, 'medium');
     width: 100%; 
 }
 .container {
   width: inherit;
   display: block;
+  padding: 10px 20px;
 }
 .column {
   width: $columnWidth;
@@ -20,14 +57,29 @@ body {
   display: inline-block;
   margin: 5px;
   vertical-align: top;
-}
-.column {
+
+  @include breakpoint(xs) {
+    width: 100%;
+  }
+  
+  @include breakpoint(sm) {
+    width: 45%;
+  }
+
+  @include breakpoint(md) {
+    width: 32%;
+  }
+  
+  @include breakpoint(lg) {
+    width: 23%;
+  }
+  
+
   .header {
     background-color: $columnHeaderBg;
     font-weight: bold;
     padding: 5px;
-  }
-  .header {
+
     .remove {
       float: right;
       cursor: pointer;
@@ -52,53 +104,58 @@ body {
 .form-group {
   display: block;
   margin: 20px 0px;
-}
-.form-group {
-  label {
+
+  & .label {
     display: block;
     margin: 5px 0px
   }
-  input,textarea {
+  & input,textarea {
     width: 100%;
   }
 }
 
-.text-right {
-  text-alight: right;
+.text-{
+  &right{ text-align: right;}
+  &left{ text-align: left;}
+  &center{ text-align: center;}
 }
-.text-left {
-  text-alight: left;
+.pull-{
+  &left{ float: left;}
+  &right{ float: right;}
 }
-.text-center {
-  text-alight: center;
-}
-.pull-left {
-  float: left;
-}
-.pull-right {
-  float: right;
-}
-.clear-left {
-  clear: left;
-}
-.clear-right {
-  clear: right;
-}
-.clear {
+.clear{
   clear: both;
+  &-left{ clear: left;}
+  &-right{ clear: right;}
 }
 
-.mt-1 {
-  margin-top: 5px;
+.mt-{
+  &1 {margin-top: $margin-1;}
+  &2 {margin-top: $margin-2;}
+  &3 {margin-top: $margin-3;}
+  &4 {margin-top: $margin-4;}
+  &5 {margin-top: $margin-5;}
 }
-.mb-1 {
-  margin-bottom: 5px;
+.mb-{
+  &1 {margin-bottom: $margin-1;}
+  &2 {margin-bottom: $margin-2;}
+  &3 {margin-bottom: $margin-3;}
+  &4 {margin-bottom: $margin-4;}
+  &5 {margin-bottom: $margin-5;}
 }
-.ml-1 {
-  margin-left: 5px;
+.ml- {
+  &1 {margin-left: $margin-1;}
+  &2 {margin-left: $margin-2;}
+  &3 {margin-left: $margin-3;}
+  &4 {margin-left: $margin-4;}
+  &5 {margin-left: $margin-5;}
 }
-.mr-1 {
-  margin-right: 5px;
+.mr- {
+  &1 {margin-right: $margin-1;}
+  &2 {margin-right: $margin-2;}
+  &3 {margin-right: $margin-3;}
+  &4 {margin-right: $margin-4;}
+  &5 {margin-right: $margin-5;}
 }
 
 /* button style */
@@ -108,9 +165,11 @@ body {
   text-align: center;
   font-size: 16px;
   font-weight: 400;
-  cursor: pointer;
   line-height: 1.5;
   border-radius: .25rem;
+  text-decoration: none;
+
+  &:hover { cursor: pointer; font-weight: bold }
 }
 .btn-primary  {
   @extend .btn;
@@ -142,7 +201,7 @@ body {
   background-color: #dc3545;
   border-color: #dc3545;
 }
-.error {color: red;}
+.error {color: $errorColor}
 .vm--modal {
   padding: 20px;
   height: auto !important;

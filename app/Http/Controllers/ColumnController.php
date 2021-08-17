@@ -10,7 +10,6 @@ use App\Models\Card;
 use Log;
 use DB;
 
-
 class ColumnController extends Controller
 {
     /**
