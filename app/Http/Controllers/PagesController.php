@@ -20,10 +20,11 @@ class PagesController extends Controller
             $path = storage_path('app/Todo-List/' . date('Y-m-d-H-i-s') . '.zip');
             
             do {
-                // wait
-            } while (Storage::disk('local')->exists($path));
-
-            return response()->download($path);
+                if (!Storage::disk('local')->exists($path)) {
+                    return response()->download($path);
+                    break;
+                }
+            } while (true);
         } catch (\Exception $e) {
             echo '<div class="text-center">There is some problem, Please try again later.</div>';
         }
